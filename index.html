@@ -171,6 +171,7 @@
       box-shadow: 6px 6px 0 var(--ink);
     }
     .resource-main { padding: clamp(24px, 4.3vw, 48px); }
+    .resource + .resource { margin-top: 32px; }
     .resource-label {
       display: inline-flex;
       align-items: center;
@@ -389,7 +390,7 @@
           <p class="section-kicker">Learn by doing</p>
           <h2 id="library-title">Playbooks</h2>
         </div>
-        <span class="count">1 guide</span>
+        <span class="count">2 guides</span>
       </div>
 
       <article class="resource" aria-labelledby="resource-title">
@@ -427,6 +428,43 @@
             </div>
           </div>
           <p class="side-note">A clear path from the decision you need to the dashboard people can trust.</p>
+        </aside>
+      </article>
+      <article class="resource" aria-labelledby="claude-resource-title">
+        <div class="resource-main">
+          <span class="resource-label">Claude playbook</span>
+          <h3 id="claude-resource-title">Claude Dashboard Playbook</h3>
+          <p class="resource-description">A hands-on guide to building evidence dashboards with Claude. Learn how to write your first prompt, connect data, explore results, trace numbers to their sources, and share your dashboard.</p>
+          <ul class="facts" aria-label="Claude playbook details">
+            <li>12-page PDF</li>
+            <li>Interactive HTML</li>
+            <li>Copy-ready prompts</li>
+            <li>Launch checklist</li>
+          </ul>
+          <div class="actions">
+            <a class="button" href="claude-dashboards/" aria-label="Open the interactive Claude Dashboard Playbook">
+              Open interactive playbook
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button secondary" href="claude-dashboards/playbook.pdf" download="Claude-Dashboard-Playbook-HubForge.pdf" aria-label="Download the Claude Dashboard Playbook PDF">
+              Download PDF
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9m0 0 3.5-3.5M10 12 6.5 8.5M4 14.5V17h12v-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <aside class="resource-side" aria-label="Inside the Claude Dashboard Playbook">
+          <div>
+            <p class="side-overline">From first prompt to sharing</p>
+            <div class="framework">
+              <div class="stage"><b>1</b><span>Build</span></div>
+              <div class="stage"><b>2</b><span>Connect data</span></div>
+              <div class="stage"><b>3</b><span>Explore</span></div>
+              <div class="stage"><b>4</b><span>Check evidence</span></div>
+              <div class="stage"><b>5</b><span>Share</span></div>
+              <div class="stage"><b>6</b><span>Master</span></div>
+            </div>
+          </div>
+          <p class="side-note">Build dashboards where every number is one click from its proof.</p>
         </aside>
       </article>
       <div class="bottom-rule" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
