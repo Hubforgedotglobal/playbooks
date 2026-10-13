@@ -1,0 +1,15 @@
+# Search and AI-search crawlers may access the public library.
+# Search crawling and model-training crawling are separate provider controls.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://playbooks.hubforgeglobal.com/sitemap.xml

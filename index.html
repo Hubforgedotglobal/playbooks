@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HubForge Playbooks | Better decisions start here</title>
-  <meta name="description" content="Free, practical HubForge playbooks for turning data into real decisions. Explore Designing Dashboards with AI and the Claude Dashboard Playbook.">
-  <link rel="canonical" href="https://playbooks.hubforgeglobal.com/">
+
+
+
   <meta name="theme-color" content="#f5f0e7">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23ff5a5a'/%3E%3Ctext x='7' y='43' font-family='Arial,sans-serif' font-weight='900' font-size='30' fill='%231f1d22'%3EHF%3C/text%3E%3C/svg%3E">
-  <meta property="og:title" content="HubForge Playbooks | Better decisions start here">
-  <meta property="og:description" content="Approachable, free playbooks for people turning data into real decisions.">
-  <meta property="og:url" content="https://playbooks.hubforgeglobal.com/">
-  <meta property="og:type" content="website">
+
+
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=League+Spartan:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -68,7 +68,8 @@
     .hero-lede { max-width:560px; margin:29px 0 0; color:var(--muted); font-size:clamp(17px,1.8vw,21px); line-height:1.55; }
     .hero-art { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; min-height:320px; }
     .book-object { position:relative; width:min(270px,76%); aspect-ratio:.72; padding:25px 24px; color:var(--ink); background:var(--coral); border:2px solid var(--ink); box-shadow:12px 12px 0 var(--ink); transform:rotate(5deg); transition:transform .25s ease; }
-    .hero-art:hover .book-object { transform:rotate(1deg) translateY(-5px); }
+    .hero-art { --art-x:0px; --art-y:0px; }
+    .book-object { transform:translate3d(var(--art-x),var(--art-y),0) rotate(5deg); }
     .book-object::before { position:absolute; top:0; bottom:0; left:13px; width:1px; background:rgba(31,29,34,.35); content:""; }
     .book-object::after { position:absolute; right:-14px; bottom:-14px; width:100%; height:100%; border:1px solid var(--ink); content:""; z-index:-1; }
     .cover-top { display:flex; align-items:center; justify-content:space-between; gap:8px; padding-bottom:13px; border-bottom:1px solid rgba(31,29,34,.42); font-size:10px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
@@ -91,7 +92,12 @@
     .shelf-note { max-width:220px; margin:0; color:var(--muted); font-size:14px; font-weight:600; text-align:right; }
     .books { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
     .book { display:grid; grid-template-rows:auto 1fr; min-width:0; border:2px solid var(--ink); background:var(--white); box-shadow:6px 6px 0 var(--ink); transition:transform .2s ease, box-shadow .2s ease; }
-    .book:hover { transform:translate(-2px,-3px); box-shadow:9px 9px 0 var(--ink); }
+    @media (hover:hover) and (pointer:fine) {
+      .hero-art:hover .book-object { transform:translate3d(var(--art-x),calc(var(--art-y) - 5px),0) rotate(1deg); }
+      .book:hover { transform:translate(-2px,-3px); box-shadow:9px 9px 0 var(--ink); }
+      .button:hover { transform:translateY(-2px); background:#38343d; }
+    }
+    .book:focus-within { transform:translate(-2px,-3px); box-shadow:9px 9px 0 var(--ink); }
     .book-visual { position:relative; display:flex; align-items:flex-end; min-height:240px; overflow:hidden; padding:52px 26px 22px; border-bottom:2px solid var(--ink); }
     .book:first-child .book-visual { background:var(--yellow); }
     .book:last-child .book-visual { background:var(--purple); }
@@ -119,9 +125,11 @@
     .book-details li { display:inline-flex; align-items:center; min-height:30px; padding:5px 9px; border:1px solid var(--line); background:var(--paper); font-size:12px; font-weight:700; }
     .book-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:auto; width:100%; }
     .button { min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:10px 15px; border:2px solid var(--ink); background:var(--ink); color:var(--white); font-size:13px; font-weight:800; text-decoration:none; transition:transform .16s ease,background .16s ease; }
-    .button:hover { transform:translateY(-2px); background:#38343d; }
+    .button:focus-visible { transform:translateY(-2px); }
     .button.secondary { background:transparent; color:var(--ink); }
-    .button.secondary:hover { background:var(--paper-deep); }
+    @media (hover:hover) and (pointer:fine) {
+      .button.secondary:hover { background:var(--paper-deep); }
+    }
     .button svg { width:16px; height:16px; flex:none; }
     .closing { display:grid; grid-template-columns:1fr auto; align-items:center; gap:25px; margin-top:66px; padding:27px 0 0; border-top:1px solid var(--line); }
     .closing p { max-width:590px; margin:0; font:700 clamp(23px,3vw,35px)/1.05 var(--display); letter-spacing:-.025em; }
@@ -136,6 +144,54 @@
     .footer-inner { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:20px; color:var(--muted); font-size:13px; }
     .footer-inner p { margin:0; }
     .footer-inner a { font-weight:800; text-decoration-color:var(--coral); text-underline-offset:4px; }
+    /* A small, editorial entrance: the page stays fully readable until the
+       enhancement script is running, then reveals arrive in a quiet cadence. */
+    .motion-ready .intro-reveal {
+      animation: page-arrive .72s cubic-bezier(.2,.75,.25,1) both;
+    }
+    .motion-ready .book { animation-name:book-arrive; }
+    .motion-ready .hero-art { animation-delay:.14s; }
+    .motion-ready .library-heading { animation-delay:.26s; }
+    .motion-ready .book:first-child { animation-delay:.36s; }
+    .motion-ready .book:last-child { animation-delay:.49s; }
+    .motion-ready .closing { animation-delay:.6s; }
+    .motion-ready .footer-inner { animation-delay:.68s; }
+    .motion-ready .cover-chart i {
+      transform-origin:bottom;
+      animation: bars-arrive .7s cubic-bezier(.2,.75,.25,1) both;
+    }
+    .motion-ready .cover-chart i:nth-child(2) { animation-delay:.12s; }
+    .motion-ready .cover-chart i:nth-child(3) { animation-delay:.2s; }
+    .motion-ready .cover-chart i:nth-child(4) { animation-delay:.28s; }
+    .motion-ready .cover-chart i:nth-child(5) { animation-delay:.36s; }
+    .hero::before { animation: orbit-drift 13s ease-in-out infinite alternate; }
+    .hero::after { animation: sun-drift 9s ease-in-out infinite alternate; }
+    .art-steps i { transition:transform .35s cubic-bezier(.2,.75,.25,1); }
+    @media (hover:hover) and (pointer:fine) {
+      .book:hover .art-steps i:nth-child(odd) { transform:translateY(-5px); }
+      .book:hover .art-steps i:nth-child(even) { transform:translateY(4px); }
+      .nav-link:hover { text-decoration:underline; }
+    }
+    @keyframes page-arrive {
+      from { transform:translateY(14px); }
+      to { transform:translateY(0); }
+    }
+    @keyframes bars-arrive {
+      from { transform:scaleY(.12); }
+      to { transform:scaleY(1); }
+    }
+    @keyframes book-arrive {
+      from { translate:0 12px; }
+      to { translate:0 0; }
+    }
+    @keyframes orbit-drift {
+      from { transform:translate3d(0,0,0); }
+      to { transform:translate3d(-7px,9px,0); }
+    }
+    @keyframes sun-drift {
+      from { transform:translate3d(0,-42%,0); }
+      to { transform:translate3d(6px,calc(-42% + 8px),0); }
+    }
     @media (max-width:960px) {
       .wrap { width:min(100% - 56px, 800px); }
       .hero-grid { grid-template-columns:minmax(0,1.1fr) minmax(200px,.75fr); gap:26px; }
@@ -148,6 +204,7 @@
       .button { width:100%; }
     }
     @media (max-width:600px) {
+      .hero::before,.hero::after { display:none; }
       .wrap { width:calc(100% - 36px); }
       .nav { min-height:68px; }
       .brand { font-size:20px; }
@@ -194,9 +251,47 @@
     }
     @media (prefers-reduced-motion:reduce) {
       html { scroll-behavior:auto; }
-      *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
+      *,*::before,*::after {
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+      }
+      .motion-ready .intro-reveal { animation:none !important; }
+      .hero::before,.hero::after { animation:none !important; }
+      .motion-ready .cover-chart i { animation:none !important; }
+      .book:hover,.book:focus-within,.button:focus-visible { transform:none; }
     }
   </style>
+
+<!-- Search, social previews and machine-readable playbook metadata -->
+<title>HubForge Playbooks | Dashboard Design &amp; AI</title>
+<meta name="description" content="Free HubForge playbooks for dashboard design and AI-assisted workflows. Read Designing Dashboards with AI and the Claude Dashboard Playbook or download the PDFs.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="HubForge Global Impact Network Foundation">
+<link rel="canonical" href="https://playbooks.hubforgeglobal.com/">
+<link rel="alternate" type="text/markdown" href="https://playbooks.hubforgeglobal.com/index.md" title="Playbook summary">
+<link rel="describedby" type="text/plain" href="https://playbooks.hubforgeglobal.com/llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HubForge Playbooks">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="HubForge Playbooks | Dashboard Design &amp; AI">
+<meta property="og:description" content="Free HubForge playbooks for dashboard design and AI-assisted workflows. Read Designing Dashboards with AI and the Claude Dashboard Playbook or download the PDFs.">
+<meta property="og:url" content="https://playbooks.hubforgeglobal.com/">
+<meta property="og:image" content="https://playbooks.hubforgeglobal.com/assets/social/library.png">
+<meta property="og:image:secure_url" content="https://playbooks.hubforgeglobal.com/assets/social/library.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HubForge Playbooks by HubForge">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HubForge Playbooks | Dashboard Design &amp; AI">
+<meta name="twitter:description" content="Free HubForge playbooks for dashboard design and AI-assisted workflows. Read Designing Dashboards with AI and the Claude Dashboard Playbook or download the PDFs.">
+<meta name="twitter:image" content="https://playbooks.hubforgeglobal.com/assets/social/library.png">
+<meta name="twitter:image:alt" content="HubForge Playbooks by HubForge">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://playbooks.hubforgeglobal.com/#publisher","name":"HubForge Global Impact Network Foundation","url":"https://www.hubforgeglobal.com/"},{"@type":"WebSite","@id":"https://playbooks.hubforgeglobal.com/#website","name":"HubForge Playbooks","url":"https://playbooks.hubforgeglobal.com/","publisher":{"@id":"https://playbooks.hubforgeglobal.com/#publisher"},"inLanguage":"en"},{"@type":"CollectionPage","@id":"https://playbooks.hubforgeglobal.com/#webpage","url":"https://playbooks.hubforgeglobal.com/","name":"HubForge Playbooks | Dashboard Design & AI","description":"Free HubForge playbooks for dashboard design and AI-assisted workflows. Read Designing Dashboards with AI and the Claude Dashboard Playbook or download the PDFs.","isPartOf":{"@id":"https://playbooks.hubforgeglobal.com/#website"},"inLanguage":"en","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://playbooks.hubforgeglobal.com/designing-dashboards/","name":"Designing Dashboards with AI"},{"@type":"ListItem","position":2,"url":"https://playbooks.hubforgeglobal.com/claude-dashboards/","name":"Claude Dashboard Playbook"}]}},{"@type":["Book","LearningResource"],"@id":"https://playbooks.hubforgeglobal.com/designing-dashboards/#playbook","name":"Designing Dashboards with AI","url":"https://playbooks.hubforgeglobal.com/designing-dashboards/","description":"Design dashboards that help people act. Learn the six-stage DESIGN framework, practise with exercises, and download the free 27-page HubForge playbook.","inLanguage":"en","isAccessibleForFree":true,"learningResourceType":"Playbook","numberOfPages":27,"publisher":{"@id":"https://playbooks.hubforgeglobal.com/#publisher"},"image":"https://playbooks.hubforgeglobal.com/assets/social/designing-dashboards.png","encoding":{"@type":"MediaObject","encodingFormat":"application/pdf","contentUrl":"https://playbooks.hubforgeglobal.com/designing-dashboards/playbook.pdf"},"about":{"@type":"Thing","name":"AI-assisted dashboard design"}},{"@type":["Book","LearningResource"],"@id":"https://playbooks.hubforgeglobal.com/claude-dashboards/#playbook","name":"Claude Dashboard Playbook","url":"https://playbooks.hubforgeglobal.com/claude-dashboards/","description":"Build evidence dashboards with Claude. Use prompts, connect data, trace numbers to their sources, and download the free 12-page HubForge playbook.","inLanguage":"en","isAccessibleForFree":true,"learningResourceType":"Playbook","numberOfPages":12,"publisher":{"@id":"https://playbooks.hubforgeglobal.com/#publisher"},"image":"https://playbooks.hubforgeglobal.com/assets/social/claude-dashboards.png","encoding":{"@type":"MediaObject","encodingFormat":"application/pdf","contentUrl":"https://playbooks.hubforgeglobal.com/claude-dashboards/playbook.pdf"},"about":{"@type":"Thing","name":"Evidence dashboards with Claude"}}]}</script>
+<link rel="stylesheet" href="/assets/sharing.css">
+<script src="/assets/sharing.js" defer></script>
 </head>
 <body>
   <div class="topline" aria-hidden="true"></div>
@@ -298,11 +393,53 @@
       </div>
     </section>
   </main>
+<aside class="playbook-sharing" data-url="https://playbooks.hubforgeglobal.com/" data-title="HubForge Playbooks" aria-label="Share HubForge Playbooks">
+<h2>Share the playbook library</h2>
+<div class="share-actions"><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fplaybooks.hubforgeglobal.com%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn (opens a new tab)">LinkedIn</a><a href="https://wa.me/?text=HubForge%20Playbooks%20by%20HubForge%20https%3A%2F%2Fplaybooks.hubforgeglobal.com%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp (opens a new tab)">WhatsApp</a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fplaybooks.hubforgeglobal.com%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook (opens a new tab)">Facebook</a><a href="https://twitter.com/intent/tweet?text=HubForge%20Playbooks%20by%20HubForge&amp;url=https%3A%2F%2Fplaybooks.hubforgeglobal.com%2F" target="_blank" rel="noopener noreferrer" aria-label="Share on X (opens a new tab)">X</a><button type="button" data-copy-link hidden>Copy link</button><button type="button" data-native-share hidden>More sharing options</button></div>
+<p class="share-status" role="status" aria-live="polite"></p>
+</aside>
+
   <footer>
     <div class="footer-inner wrap">
       <p>Free to use. Made for better decisions.</p>
       <a href="https://www.hubforgeglobal.com">HubForge Global Impact Network Foundation</a>
     </div>
   </footer>
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (!reduceMotion.matches) {
+        document.querySelectorAll(".hero-copy, .hero-art, .library-heading, .book, .closing, .footer-inner")
+          .forEach((element) => element.classList.add("intro-reveal"));
+        requestAnimationFrame(() => document.body.classList.add("motion-ready"));
+
+        const art = document.querySelector(".hero-art");
+        const book = art && art.querySelector(".book-object");
+        const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+        if (art && book && finePointer.matches) {
+          let frame = 0;
+          let nextX = 0;
+          let nextY = 0;
+          art.addEventListener("pointermove", (event) => {
+            if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+            const bounds = art.getBoundingClientRect();
+            nextX = ((event.clientX - bounds.left) / bounds.width - .5) * 10;
+            nextY = ((event.clientY - bounds.top) / bounds.height - .5) * 8;
+            if (!frame) frame = requestAnimationFrame(() => {
+              book.style.setProperty("--art-x", `${nextX.toFixed(1)}px`);
+              book.style.setProperty("--art-y", `${nextY.toFixed(1)}px`);
+              frame = 0;
+            });
+          }, { passive:true });
+          art.addEventListener("pointerleave", () => {
+            if (frame) cancelAnimationFrame(frame);
+            frame = 0;
+            book.style.setProperty("--art-x", "0px");
+            book.style.setProperty("--art-y", "0px");
+          }, { passive:true });
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

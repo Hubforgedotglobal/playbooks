@@ -1,0 +1,25 @@
+# HubForge Playbooks
+
+> Free HubForge playbooks about dashboard design, AI-assisted workflows, and evidence-based decisions. Each title has a readable web version and a downloadable PDF.
+
+Published by HubForge Global Impact Network Foundation. The library currently contains two playbooks. These are educational resources, not a dashboard-hosting service.
+
+## Library
+
+- [Library overview](https://playbooks.hubforgeglobal.com/index.md): Available titles and how to choose a playbook.
+
+## Playbooks
+
+- [Designing Dashboards with AI](https://playbooks.hubforgeglobal.com/designing-dashboards/index.md): Summary of the six-stage DESIGN framework, exercises, and source links.
+- [Claude Dashboard Playbook](https://playbooks.hubforgeglobal.com/claude-dashboards/index.md): Summary of prompts, data, evidence, and sharing topics with source links.
+
+## Original sources
+
+- [Designing Dashboards with AI web playbook](https://playbooks.hubforgeglobal.com/designing-dashboards/): Original content and working exercises.
+- [Claude Dashboard Playbook web playbook](https://playbooks.hubforgeglobal.com/claude-dashboards/): Original content and working examples.
+- [Designing Dashboards with AI PDF](https://playbooks.hubforgeglobal.com/designing-dashboards/playbook.pdf): 27-page downloadable edition.
+- [Claude Dashboard Playbook PDF](https://playbooks.hubforgeglobal.com/claude-dashboards/playbook.pdf): 12-page downloadable edition.
+
+## Optional
+
+- [HubForge](https://www.hubforgeglobal.com): Publisher's main website.
