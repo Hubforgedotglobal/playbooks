@@ -547,34 +547,23 @@ section.night .rt{color:#c9c3d2}
 }
 .hero h1 .pb{display:block;font-size:.34em;letter-spacing:.32em;text-transform:uppercase;margin-top:.5em;color:var(--muted);font-weight:800}
 
-/* jacket continuity: a quiet haldi thread across the reading surface */
-:root{
-  --paper:#fbf8f0;
-  --paper-2:#f3eee3;
-  --paper-3:#e9e1d2;
-  --jacket-wash:#fff5c9;
-  --jacket-line:#d8b72e;
+/* A solid haldi jacket opens the playbook; the chapters return to clean paper. */
+.hero{
+  --hero-ink:#1f1d22;
+  --hero-muted:#3a3640;
+  --ink:#1f1d22; --ink-2:#3a3640; --muted:#5e5867;
+  --paper:#ffffff; --paper-2:#f5f3f8; --paper-3:#ece8f1; --line:#e4e0ea;
+  background:var(--haldi);
+  color:var(--hero-ink);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#141317; --paper-2:#1c1a20; --paper-3:#25222a;
-  --jacket-wash:#38311a; --jacket-line:#b99c36;
-}}
-:root[data-theme="dark"]{
-  --paper:#141317; --paper-2:#1c1a20; --paper-3:#25222a;
-  --jacket-wash:#38311a; --jacket-line:#b99c36;
-}
-.hero{border-top:8px solid var(--haldi);background:linear-gradient(115deg,color-mix(in srgb,var(--haldi) 22%,var(--paper)) 0%,var(--paper) 65%)}
-.hero .vol{display:inline-block;padding:5px 12px;border-radius:8px;background:var(--haldi);color:#1f1d22}
-.folio .dev{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;border-radius:10px;background:var(--haldi);color:#1f1d22}
-.hero h1 .ai{box-shadow:inset 0 -0.12em 0 color-mix(in srgb,var(--haldi) 58%,transparent)}
-.navlinks a.on{background:color-mix(in srgb,var(--haldi) 22%,var(--paper-2))}
-.navlinks a:hover{background:color-mix(in srgb,var(--haldi) 12%,var(--paper-2))}
-.route:hover,.tool:hover,.opt:hover{border-color:var(--jacket-line)}
-.nextup{border-color:color-mix(in srgb,var(--jacket-line) 64%,currentColor)}
-.nextup:hover{background:color-mix(in srgb,var(--haldi) 19%,transparent)}
-.bench .cap{border-bottom:2px solid var(--jacket-line);padding-bottom:8px}
-.benchbtn i{background:var(--haldi)}
-:focus-visible{outline-color:var(--ink)}
+.hero .vol,.hero .lede,.hero .routeout{color:var(--hero-muted)}
+.hero h1 em,.hero h1 .ai,.hero h1 .pb{color:var(--hero-ink)}
+.hero h1 .ai{border-bottom-color:var(--hero-ink);box-shadow:inset 0 -0.12em 0 rgba(31,29,34,.14)}
+.hero .route{background:rgba(255,255,255,.88);color:var(--hero-ink)}
+.hero .route span{color:var(--hero-muted)}
+.hero .route[aria-pressed="true"]{background:var(--hero-ink);color:#fff}
+.hero .route[aria-pressed="true"] span{color:rgba(255,255,255,.78)}
+.hero .btn.ghost{color:var(--hero-ink);border-color:var(--hero-ink)}
 </style></head><body>
 
 <nav class="nav" aria-label="Chapters">
