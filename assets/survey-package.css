@@ -11,3 +11,39 @@
 }
 .hero::before { display:none; }
 .hero h1 em,.hero .pb,.hero .kick { color:var(--ink); }
+
+/* Bound both columns: an intrinsic-width download row must not squeeze the copy. */
+.resource-shelf .wrap {
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  align-items:start;
+  gap:clamp(20px,3vw,36px);
+}
+.resource-shelf .shelf-copy,.resource-links { min-width:0; }
+.resource-shelf h2 { scroll-margin-top:96px; }
+.resource-links {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;
+  gap:10px;
+}
+.resource-links .btn {
+  min-width:0;
+  min-height:48px;
+  justify-content:center;
+  padding:11px 12px;
+  font-size:14px;
+  line-height:1.4;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  text-align:center;
+}
+@media(max-width:960px) {
+  .resource-shelf .wrap { grid-template-columns:minmax(0,1fr); gap:20px; }
+  .resource-links { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+  .resource-links { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:380px) {
+  .resource-links { grid-template-columns:minmax(0,1fr); }
+}
