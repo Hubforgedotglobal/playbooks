@@ -171,7 +171,7 @@
     if (comment) comment.value = mine.comment || "";
     setStars(Number(mine.rating),form);
     const button = $(".hf-submit",form);
-    if (button) button.textContent = "Update my rating";
+    if (button) button.textContent = form.classList.contains("hf-card-rating") ? "Update" : "Update my rating";
     });
   }
   function setStars(rating,form) {
@@ -282,12 +282,12 @@
           website:$("input[name=website]",form).value
         })});
         state.myRatings.set(ratedSlug,{ playbook:ratedSlug,rating,comment:$("textarea[name=comment]",form).value.trim() });
-        button.textContent = "Update my rating";
+        button.textContent = form.classList.contains("hf-card-rating") ? "Update" : "Update my rating";
         status(message,"Your rating was saved. You can update it any time.");
         // Refresh live averages without resetting the writer's form or other cards.
         request("").then(data => { state.data=data; renderStats(); }).catch(() => {});
       } catch (error) {
-        button.textContent = state.myRatings.has(ratedSlug) ? "Retry rating update" : "Retry rating";
+        button.textContent = form.classList.contains("hf-card-rating") ? "Retry" : (state.myRatings.has(ratedSlug) ? "Retry rating update" : "Retry rating");
         status(message,error.message,true);
       } finally { button.disabled = !apiBase; }
     });
