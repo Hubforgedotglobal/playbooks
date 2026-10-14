@@ -10,7 +10,7 @@
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   const slug = document.body.dataset.communitySlug || ($("[data-community-slug]") || {}).dataset?.communitySlug || "";
   const TOKEN_KEY = "hf-community-token";
-  const state = { data:null, voted:new Set(), myRating:null };
+  const state = { data:null, voted:new Set(), myRatings:new Map() };
   let memoryToken = "", sessionPromise = null;
   const endpoint = path => `${apiBase}/api/community${path}`;
 
@@ -103,6 +103,12 @@
       const title = document.createElement("span");
       title.className = "hf-topic-title";
       title.textContent = topic.title;
+      if (topic.description) {
+        const description = document.createElement("span");
+        description.className = "hf-topic-description";
+        description.textContent = topic.description;
+        title.append(description);
+      }
       const button = document.createElement("button");
       button.type = "button";
       button.className = "hf-topic-vote";
@@ -150,29 +156,30 @@
     try {
       const mine = await request("/me",{ authorized:true });
       if (Array.isArray(mine.votes)) state.voted = new Set(mine.votes.map(String));
-      if (slug && Array.isArray(mine.ratings)) state.myRating = mine.ratings.find(item => item.playbook === slug) || null;
+      if (Array.isArray(mine.ratings)) state.myRatings = new Map(mine.ratings.map(item => [item.playbook,item]));
       renderTopics();
       restoreRating();
     } catch (_) { /* GET community remains usable if a saved session has expired. */ }
   }
   function restoreRating() {
-    if (!state.myRating) return;
-    const form = $("[data-hf-rating-form]");
-    if (!form) return;
+    $$("[data-hf-rating-form]").forEach(form => {
+    const mine = state.myRatings.get(form.dataset.ratingPlaybook || slug);
+    if (!mine) return;
     const ratingInput = $("input[name=rating]",form);
-    if (ratingInput) ratingInput.value = String(state.myRating.rating);
+    if (ratingInput) ratingInput.value = String(mine.rating);
     const comment = $("textarea[name=comment]",form);
-    if (comment) comment.value = state.myRating.comment || "";
-    setStars(Number(state.myRating.rating));
+    if (comment) comment.value = mine.comment || "";
+    setStars(Number(mine.rating),form);
     const button = $(".hf-submit",form);
     if (button) button.textContent = "Update my rating";
+    });
   }
-  function setStars(rating) {
-    $$(".hf-star").forEach(button => {
+  function setStars(rating,form) {
+    $$(".hf-star",form).forEach(button => {
       button.setAttribute("aria-pressed",String(Number(button.dataset.rating) <= rating));
       button.setAttribute("aria-label",`${button.dataset.rating} ${button.dataset.rating === "1" ? "star" : "stars"}`);
     });
-    const hidden = $("input[name=rating]");
+    const hidden = $("input[name=rating]",form);
     if (hidden) hidden.value = String(rating);
   }
   async function refreshCommunity() {
@@ -200,6 +207,8 @@
   }
   async function vote(topicId,button) {
     if (button.disabled || button.getAttribute("aria-pressed") === "true") return;
+    const votingSection = $("[data-hf-topics]")?.closest(".hf-community") || document;
+    const message = $("[data-community-status]",votingSection);
     button.disabled = true;
     try {
       const result = await request("/votes",{ method:"POST",authorized:true,body:JSON.stringify({topic:topicId}) });
@@ -208,7 +217,7 @@
         button.setAttribute("aria-pressed","true");
         $("span:first-child",button).textContent = "Saved";
         $(".hf-count",button).textContent = String(result.votes);
-        status($("[data-community-status]"),"Your vote is saved.");
+        status(message,"Your vote is saved.");
       } else {
         state.voted.add(String(topicId));
         button.setAttribute("aria-pressed","true");
@@ -217,7 +226,7 @@
       }
     } catch (error) {
       $("span:first-child",button).textContent = "Retry vote";
-      status($("[data-community-status]"),error.message,true);
+      status(message,error.message,true);
     } finally { button.disabled = false; }
   }
   function bindSuggestion() {
@@ -245,15 +254,15 @@
     });
   }
   function bindRating() {
-    const form = $("[data-hf-rating-form]");
-    if (!form) return;
+    $$("[data-hf-rating-form]").forEach(form => {
+    const ratedSlug = form.dataset.ratingPlaybook || slug;
     $$(".hf-star",form).forEach(button => {
-      button.addEventListener("click",() => setStars(Number(button.dataset.rating)));
+      button.addEventListener("click",() => setStars(Number(button.dataset.rating),form));
       button.addEventListener("keydown",event => {
         if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
           event.preventDefault();
           const next = Math.max(1,Math.min(5,Number($("input[name=rating]",form).value) + (event.key === "ArrowRight" ? 1 : -1)));
-          setStars(next); $(`[data-rating="${next}"]`,form).focus();
+          setStars(next,form); $(`[data-rating="${next}"]`,form).focus();
         }
       });
     });
@@ -269,16 +278,19 @@
       status(message,"Saving your rating.");
       try {
         await request("/ratings",{method:"POST",authorized:true,body:JSON.stringify({
-          playbook:slug,rating,comment:$("textarea[name=comment]",form).value.trim(),
+          playbook:ratedSlug,rating,comment:$("textarea[name=comment]",form).value.trim(),
           website:$("input[name=website]",form).value
         })});
-        state.myRating = { playbook:slug,rating,comment:$("textarea[name=comment]",form).value.trim() };
+        state.myRatings.set(ratedSlug,{ playbook:ratedSlug,rating,comment:$("textarea[name=comment]",form).value.trim() });
         button.textContent = "Update my rating";
         status(message,"Your rating was saved. You can update it any time.");
+        // Refresh live averages without resetting the writer's form or other cards.
+        request("").then(data => { state.data=data; renderStats(); }).catch(() => {});
       } catch (error) {
-        button.textContent = state.myRating ? "Retry rating update" : "Retry rating";
+        button.textContent = state.myRatings.has(ratedSlug) ? "Retry rating update" : "Retry rating";
         status(message,error.message,true);
       } finally { button.disabled = !apiBase; }
+    });
     });
   }
   function trackEvents() {

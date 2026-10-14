@@ -39,6 +39,18 @@
 .hf-stars { display:flex; gap:5px; }
 .hf-star { display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border:1px solid var(--hf-line); background:var(--hf-paper); color:var(--hf-ink); font-size:23px; cursor:pointer; }
 .hf-star[aria-pressed="true"],.hf-star:hover { background:var(--hf-yellow); }
+.hf-star:focus-visible,.hf-submit:focus-visible { outline:3px solid var(--hf-purple); outline-offset:3px; }
+.hf-card-rating { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:8px 12px; width:100%; margin:0 0 20px; padding:11px 12px; border:1px solid var(--hf-line); border-left:4px solid var(--hf-yellow); background:#f5f0e7; }
+.hf-card-rating-title { grid-column:1/-1; margin:0; font-size:13px; font-weight:800; letter-spacing:.035em; }
+.hf-card-rating .hf-stars { gap:4px; }
+.hf-card-rating .hf-star { width:44px; height:44px; flex:0 0 44px; border:1px solid var(--hf-ink); font-size:22px; }
+.hf-card-rating .hf-submit { min-height:44px; padding:8px 12px; font-size:12px; }
+.hf-card-rating .hf-status { grid-column:1/-1; min-height:0; font-size:12px; line-height:1.3; }
+.hf-card-comment { grid-column:1/-1; font-size:12px; }
+.hf-card-comment summary { width:max-content; min-height:32px; display:flex; align-items:center; color:var(--hf-muted); font-weight:700; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.hf-card-comment label { display:block; margin:5px 0 4px; font-size:12px; font-weight:700; }
+.hf-card-comment textarea { width:100%; min-height:68px; padding:8px; border:1px solid var(--hf-line); border-radius:0; background:var(--hf-paper); color:var(--hf-ink); font:inherit; resize:vertical; }
+.hf-topic-description { display:block; margin-top:4px; color:var(--hf-muted); font-size:13px; font-weight:400; line-height:1.45; }
 .hf-reviews { display:grid; gap:10px; margin-top:24px; }
 .hf-review { padding:14px 16px; border-left:4px solid var(--hf-purple); background:#f5f0e7; }
 .hf-review p { margin:0; }
@@ -58,6 +70,9 @@
   .hf-topic { grid-template-columns:1fr; }
   .hf-topic-vote { width:100%; }
   .hf-form { padding:16px; }
+  .hf-card-rating { grid-template-columns:minmax(0,1fr); gap:7px; padding:10px; }
+  .hf-card-rating-title,.hf-card-rating .hf-status,.hf-card-comment { grid-column:1; }
+  .hf-card-rating .hf-submit { width:100%; }
   .hf-submit { width:100%; }
   .hf-rating-section,.hf-requests { padding-block:48px; }
 }
