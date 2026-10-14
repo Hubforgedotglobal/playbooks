@@ -5,7 +5,7 @@
   const apiBase = typeof API_SETTING === "string" && API_SETTING.trim()
     ? API_SETTING.trim().replace(/\/+$/, "")
     : (!libraryHost ? location.origin : "");
-  const slugs = ["designing-dashboards", "claude-dashboards"];
+  const slugs = ["designing-dashboards", "claude-dashboards", "designing-surveys-and-forms"];
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   const slug = document.body.dataset.communitySlug || ($("[data-community-slug]") || {}).dataset?.communitySlug || "";
@@ -22,6 +22,12 @@
   function setCommunityAvailability(available, message) {
     $$("[data-community-action]").forEach(control => { control.disabled = !available; });
     $$("[data-community-status]").forEach(el => status(el, message, !available));
+    if (available) $$("[data-hf-rating-form]").forEach(form => {
+      const ratedSlug = form.dataset.ratingPlaybook || slug;
+      if (state.data?.playbooks?.some(book => book.slug === ratedSlug)) return;
+      $$("[data-community-action]",form).forEach(control => { control.disabled = true; });
+      status($("[data-community-status]",form),"Ratings for this new playbook are not available yet. You can still read and download it.");
+    });
   }
   async function responseError(response) {
     let detail = "";
@@ -98,6 +104,8 @@
       return;
     }
     topics.forEach(topic => {
+      // A published title is no longer a next-playbook voting choice.
+      if (topic.id === "designing-surveys-forms-ai") return;
       const row = document.createElement("div");
       row.className = "hf-topic";
       const title = document.createElement("span");
@@ -303,6 +311,7 @@
       last = now;
       if (elapsed >= 8000) {
         done = true;
+        if (!state.data?.playbooks?.some(book => book.slug === slug)) return;
         request("/events",{method:"POST",authorized:true,body:JSON.stringify({playbook:slug,kind:"view"}),keepalive:true})
           .catch(() => {});
       } else frame = requestAnimationFrame(tick);
@@ -324,15 +333,18 @@
       const link = event.target.closest("a[href]");
       if (!link) return;
       const url = new URL(link.href,location.href);
-      const match = url.pathname.match(/\/(designing-dashboards|claude-dashboards)\/playbook\.pdf$/);
+      const match = url.pathname.match(/\/([^/]+)\/(?:playbook|workbook|cheat-sheet)\.pdf$/);
       if (!match || !slugs.includes(match[1]) || !apiBase) return;
+      if (state.data && !state.data.playbooks?.some(book => book.slug === match[1])) return;
       request("/events",{method:"POST",authorized:true,body:JSON.stringify({playbook:match[1],kind:"download"}),keepalive:true}).catch(() => {});
     },true);
   }
   function installStatsSlots() {
     $$(".book").forEach(card => {
       const title = $(".book-meta",card);
-      const slugGuess = $("a[href*='designing-dashboards/']",card) ? "designing-dashboards" : "claude-dashboards";
+      const slugGuess = $("[data-rating-playbook]",card)?.dataset.ratingPlaybook ||
+        slugs.find(name => $(`a[href*='${name}/']`,card));
+      if (!slugGuess) return;
       if (!title || $(`[data-hf-stats="${slugGuess}"]`,card)) return;
       const slot = document.createElement("p");
       slot.className = "hf-shelf-stats";

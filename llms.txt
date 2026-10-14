@@ -1,8 +1,8 @@
 # HubForge Playbooks
 
-> Free HubForge playbooks about dashboard design, AI-assisted workflows, and evidence-based decisions. Each title has a readable web version and a downloadable PDF.
+> Free HubForge playbooks about dashboard design, surveys and forms, AI-assisted workflows, and evidence-based decisions. Each title has a readable web version and a downloadable PDF.
 
-Published by HubForge Global Impact Network Foundation. The library currently contains two playbooks. These are educational resources, not a dashboard-hosting service.
+Published by HubForge Global Impact Network Foundation. The library currently contains three playbooks. These are educational resources, not a dashboard-hosting service.
 
 ## Library
 
@@ -14,6 +14,13 @@ Published by HubForge Global Impact Network Foundation. The library currently co
 - [Claude Dashboard Playbook](https://playbooks.hubforgeglobal.com/claude-dashboards/index.md): Summary of prompts, data, evidence, and sharing topics with source links.
 
 ## Original sources
+
+- [Designing Surveys and Forms with AI](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/index.md): The six-stage SURVEY method for monitoring forms and evaluation surveys, with a companion workbook, cheat sheet, and two XLSForm examples.
+- [Surveys and Forms web playbook](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/): Original playbook and exercises.
+- [Surveys and Forms workbook](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/workbook/): Thirteen working sheets and a survey design brief.
+- [Surveys and Forms playbook PDF](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/playbook.pdf): 37-page playbook.
+- [Surveys and Forms workbook PDF](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/workbook.pdf): 27-page workbook.
+- [Surveys and Forms cheat sheet](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/cheat-sheet.pdf): One-page reference.
 
 - [Designing Dashboards with AI web playbook](https://playbooks.hubforgeglobal.com/designing-dashboards/): Original content and working exercises.
 - [Claude Dashboard Playbook web playbook](https://playbooks.hubforgeglobal.com/claude-dashboards/): Original content and working examples.

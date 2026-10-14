@@ -9,6 +9,15 @@ HubForge Playbooks is a free library of practical educational resources for turn
 
 ## Read and download
 
+- Choose **Designing Surveys and Forms with AI** to design monitoring forms and evaluation surveys using the six-stage SURVEY method. Includes a 37-page playbook, a 27-page companion workbook with thirteen worksheets, a one-page cheat sheet, and two XLSForm examples.
+- [Surveys and Forms playbook](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/)
+- [Companion workbook](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/workbook/)
+- [Playbook PDF](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/playbook.pdf)
+- [Workbook PDF](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/workbook.pdf)
+- [Cheat sheet PDF](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/cheat-sheet.pdf)
+- [Home visit XLSForm](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/downloads/home-visit-xlsform.xlsx)
+- [Household survey XLSForm](https://playbooks.hubforgeglobal.com/designing-surveys-and-forms/downloads/household-survey-xlsform.xlsx)
+
 - [Library](https://playbooks.hubforgeglobal.com/)
 - [Designing Dashboards with AI](https://playbooks.hubforgeglobal.com/designing-dashboards/)
 - [Designing Dashboards with AI PDF](https://playbooks.hubforgeglobal.com/designing-dashboards/playbook.pdf)

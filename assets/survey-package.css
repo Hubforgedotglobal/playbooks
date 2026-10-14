@@ -1,0 +1,13 @@
+/* Match the library cover at the opening, then leave reading pages unchanged. */
+.hero {
+  --ink:#1f1d22;
+  --muted:#3e4935;
+  --line:rgba(31,29,34,.22);
+  --card:#fffdf8;
+  --brand:#234e1c;
+  --brand-2:#39742e;
+  color:var(--ink);
+  background:#7ed957;
+}
+.hero::before { display:none; }
+.hero h1 em,.hero .pb,.hero .kick { color:var(--ink); }
