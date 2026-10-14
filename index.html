@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="/assets/community.css?v=d5a8f594f25f">
 <script src="/assets/community-config.js?v=afc1a004b3b4" defer></script>
 <script src="/assets/community.js?v=cc5e555948d4" defer></script>
+<script src="/assets/library.js?v=3b7ee0c4797a" defer></script>
 
 
 
@@ -297,6 +298,7 @@
       .book:hover,.book:focus-within,.button:focus-visible { transform:none; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/library.css?v=fe89ab5a68cb">
 
 </head>
 <body>
@@ -311,12 +313,16 @@
     </nav>
   </header>
   <main>
-    <section class="hero" aria-labelledby="page-title">
+    <section class="hero" aria-labelledby="page-title" data-library-reveal>
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">A library for the work behind the numbers</p>
-          <h1 id="page-title">Make data <span>mean more.</span></h1>
-          <p class="hero-lede">Free playbooks for people turning information into real decisions. Clear thinking, useful tools, and room to learn by doing.</p>
+          <h1 id="page-title">Playbooks.<span>Put to work.</span></h1>
+          <p class="hero-lede">Free playbooks, templates, and workbooks for better decisions with data and AI. Read, practise, and use what works.</p>
+          <div class="library-hero-actions">
+            <a class="button" href="#library-title">Browse playbooks →</a>
+            <a class="button secondary" href="#community-title">Suggest a topic</a>
+          </div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="book-object">
@@ -329,16 +335,36 @@
         <span class="hero-index" aria-hidden="true">Read · reflect · make better calls</span>
       </div>
     </section>
-    <section class="library wrap" aria-labelledby="library-title">
+    <section class="library wrap" aria-labelledby="library-title" data-library-reveal>
       <div class="library-heading">
         <div>
           <p class="section-kicker">Open the shelf</p>
           <h2 id="library-title">Playbooks</h2>
         </div>
-        <p class="shelf-note">Start with the question you are trying to answer.</p>
+         <p class="shelf-note">Find a practical next step for the question in front of you.</p>
       </div>
-      <div class="books">
-        <article class="book" aria-labelledby="design-title">
+      <div class="library-tools" data-library-tools hidden>
+        <div class="library-search">
+          <label for="hf-library-search"><span>Search the shelf</span></label>
+          <div class="library-search-field">
+            <input id="hf-library-search" type="search" data-library-search placeholder="Try dashboards, surveys, AI…" autocomplete="off">
+            <button class="library-clear" type="button" data-library-clear aria-label="Clear search" hidden>×</button>
+          </div>
+        </div>
+        <div class="library-filters" data-library-filters aria-label="Filter by topic"></div>
+        <label class="library-sort">
+          <span>Sort by</span>
+          <select data-library-sort>
+            <option value="newest">Newest first</option>
+            <option value="title">Title, A–Z</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+        </label>
+        <button class="library-reset" type="button" data-library-reset>Reset filters</button>
+      </div>
+      <p class="library-count" data-library-count aria-live="polite">Browse all playbooks</p>
+      <div class="books" data-library-grid>
+        <article class="book" aria-labelledby="design-title" data-slug="designing-dashboards" data-title="Designing Dashboards with AI" data-topics="dashboards ai" data-topic-labels="Dashboards|AI workflows" data-order="1" data-library-reveal>
           <div class="book-visual" aria-hidden="true">
             <span class="volume">Playbook 01 · Design</span>
             <span class="art-word">A better<br>dashboard<br>starts here.</span>
@@ -387,7 +413,7 @@
             </div>
           </div>
         </article>
-        <article class="book" aria-labelledby="claude-title">
+        <article class="book" aria-labelledby="claude-title" data-slug="claude-dashboards" data-title="Claude Dashboard Playbook" data-topics="dashboards ai" data-topic-labels="Dashboards|AI workflows" data-order="2" data-library-reveal>
           <div class="book-visual" aria-hidden="true">
             <span class="volume">Playbook 02 · Evidence</span>
             <span class="art-word">Every number<br>has a story.</span>
@@ -436,7 +462,7 @@
             </div>
           </div>
         </article>
-        <article class="book" aria-labelledby="surveys-title">
+        <article class="book" aria-labelledby="surveys-title" data-slug="designing-surveys-and-forms" data-title="Designing Surveys and Forms with AI" data-topics="surveys ai" data-topic-labels="Surveys &amp; forms|AI workflows" data-order="3" data-library-reveal>
           <div class="book-visual" aria-hidden="true">
             <span class="volume">Playbook 03 · Better questions</span>
             <span class="art-word">Ask well.<br>Learn what<br>matters.</span>
@@ -481,6 +507,12 @@
           </div>
         </article>
       </div>
+      <div class="library-empty" data-library-empty hidden>
+        <p class="section-kicker">Nothing on this shelf</p>
+        <h3>No Playbooks match that search.</h3>
+        <p>Try another phrase or clear the filters to browse the full collection.</p>
+        <button class="button" type="button" data-library-reset>Show all Playbooks</button>
+      </div>
       <div class="closing">
         <p>Useful guides. Real questions. <span>Better decisions.</span></p>
         <span class="colorbars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
@@ -488,6 +520,9 @@
     </section>
     <section class="hf-community hf-requests" aria-labelledby="community-title">
       <div class="hf-community-wrap hf-community-panel">
+        <details class="library-contribute">
+          <summary><span>Help shape the next playbook</span><span class="library-contribute-action">Vote or suggest a topic</span></summary>
+          <div class="library-contribute-body">
         <p class="hf-community-kicker">Built in the open</p>
         <h2 id="community-title">What should we make next?</h2>
         <p class="hf-community-intro">Help shape the next practical guide. Vote for a topic or tell us what would help you make a better decision with data.</p>
@@ -516,6 +551,8 @@
           </form>
         </div>
         <p class="hf-privacy">No sign-in or email required. An anonymous browser ID remembers your votes and ratings. Views are counted once per browser each day, not as unique people. Download counts are clicks. Suggestions and written feedback stay private unless approved for publication.</p>
+          </div>
+        </details>
       </div>
     </section>
   </main>
@@ -532,41 +569,5 @@
       <a href="https://www.hubforgeglobal.com">HubForge Global Impact Network Foundation</a>
     </div>
   </footer>
-  <script>
-    (() => {
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      if (!reduceMotion.matches) {
-        document.querySelectorAll(".hero-copy, .hero-art, .library-heading, .book, .closing, .footer-inner")
-          .forEach((element) => element.classList.add("intro-reveal"));
-        requestAnimationFrame(() => document.body.classList.add("motion-ready"));
-
-        const art = document.querySelector(".hero-art");
-        const book = art && art.querySelector(".book-object");
-        const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-        if (art && book && finePointer.matches) {
-          let frame = 0;
-          let nextX = 0;
-          let nextY = 0;
-          art.addEventListener("pointermove", (event) => {
-            if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
-            const bounds = art.getBoundingClientRect();
-            nextX = ((event.clientX - bounds.left) / bounds.width - .5) * 10;
-            nextY = ((event.clientY - bounds.top) / bounds.height - .5) * 8;
-            if (!frame) frame = requestAnimationFrame(() => {
-              book.style.setProperty("--art-x", `${nextX.toFixed(1)}px`);
-              book.style.setProperty("--art-y", `${nextY.toFixed(1)}px`);
-              frame = 0;
-            });
-          }, { passive:true });
-          art.addEventListener("pointerleave", () => {
-            if (frame) cancelAnimationFrame(frame);
-            frame = 0;
-            book.style.setProperty("--art-x", "0px");
-            book.style.setProperty("--art-y", "0px");
-          }, { passive:true });
-        }
-      }
-    })();
-  </script>
 </body>
 </html>

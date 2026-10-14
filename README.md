@@ -13,6 +13,18 @@ GitHub Pages serves the root of the `main` branch. The `CNAME` file associates t
 
 Only supplied, approved playbooks belong in this library.
 
+## Growing the browsable library
+
+Keep each card as a real linked `article.book` inside `[data-library-grid]`.
+Set its `data-slug`, `data-title`, `data-order` (larger means more recently added),
+space-separated `data-topics`, and matching pipe-separated `data-topic-labels`.
+Search, filters, counts and sorting discover these cards at page load; there is
+no separate JavaScript topic list to maintain. Preserve its existing rating form
+and download links. Cards remain readable when JavaScript is disabled.
+
+Refresh asset versions after changing library CSS or JavaScript. Do not replace
+the shared reader-activity service with browser-only view or rating counts.
+
 ## Surveys and Forms package
 
 `designing-surveys-and-forms/` contains the supplied playbook, companion workbook,
