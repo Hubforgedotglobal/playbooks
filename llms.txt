@@ -30,3 +30,12 @@ Published by HubForge Global Impact Network Foundation. The library currently co
 ## Optional
 
 - [HubForge](https://www.hubforgeglobal.com): Publisher's main website.
+
+## Consulting in Monitoring & Evaluation with AI
+
+- [Web playbook](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/): 18 chapters, the seven-stage CONSULT method, practical tools and AI prompts for M&E consultants.
+- [Playbook summary](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/index.md): Plain-text overview and resource links.
+- [Playbook PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/playbook.pdf): 60 pages.
+- [Template pack PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/template-pack.pdf): 81 pages with 36 printable templates.
+- [From Zero to World-Class toolkit PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/consulting-toolkit.pdf): 94-page M&E consulting toolkit.
+- [Cheat sheet PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/cheat-sheet.pdf): One-page CONSULT method reference from the supplied playbook.

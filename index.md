@@ -25,3 +25,15 @@ HubForge Playbooks is a free library of practical educational resources for turn
 - [Claude Dashboard Playbook PDF](https://playbooks.hubforgeglobal.com/claude-dashboards/playbook.pdf)
 
 These playbooks are free to read and download. Their web versions include exercises and examples. This library does not host a dashboard-building service.
+
+## Consulting in M&E with AI
+
+Follow the seven-stage CONSULT method to choose, contract and deliver monitoring
+and evaluation assignments. Includes 18 chapters, hands-on tools, a 60-page
+playbook, an 81-page pack with 36 printable templates, and a 94-page toolkit.
+
+- [Read the consulting playbook](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/)
+- [Consulting playbook PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/playbook.pdf)
+- [Template pack PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/template-pack.pdf)
+- [Consulting toolkit PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/consulting-toolkit.pdf)
+- [One-page cheat sheet PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/cheat-sheet.pdf)
