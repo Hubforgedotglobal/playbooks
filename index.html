@@ -177,7 +177,8 @@
     footer { border-top:1px solid var(--line); background:var(--paper-deep); }
     .footer-inner { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:20px; color:var(--muted); font-size:13px; }
     .footer-inner p { margin:0; }
-    .footer-inner a { font-weight:800; text-decoration-color:var(--coral); text-underline-offset:4px; }
+    .footer-inner a { display:inline-flex; align-items:center; min-height:44px; font-weight:800; text-decoration-color:var(--coral); text-underline-offset:4px; }
+    .logo-downloads { display:flex; flex-wrap:wrap; gap:4px 18px; }
     /* A small, editorial entrance: the page stays fully readable until the
        enhancement script is running, then reveals arrive in a quiet cadence. */
     .motion-ready .intro-reveal {
@@ -566,6 +567,10 @@
   <footer>
     <div class="footer-inner wrap">
       <p>Free to use. Made for better decisions.</p>
+      <nav class="logo-downloads" id="logo-downloads" aria-label="Logo downloads">
+        <a href="/assets/brand/playbooks-logo.png?v=c207e3406c17" download="HubForge-Playbooks-logo.png">Download logo (PNG)</a>
+        <a href="/assets/brand/playbooks-logo.svg?v=438de1bf43b3" download="HubForge-Playbooks-logo.svg">Vector (SVG)</a>
+      </nav>
       <a href="https://www.hubforgeglobal.com">HubForge Global Impact Network Foundation</a>
     </div>
   </footer>
