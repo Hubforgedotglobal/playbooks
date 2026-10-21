@@ -1,0 +1,21 @@
+/* Playbooks brand: compact library link shared by the library and every playbook header. */
+.pb-home{display:inline-flex;align-items:center;flex:none;min-height:44px;padding:4px 2px;text-decoration:none;border-radius:10px;line-height:0}
+.pb-home img{display:block;width:auto;height:30px;background:none;border-radius:0}
+.pb-home .pb-icon{height:34px}
+.pb-home .pb-icon,.pb-home .pb-dark{display:none}
+.pb-home+.brand img,.pb-home+.brand>img{display:none}
+.pb-rule{display:block;width:1px;height:26px;background:currentColor;opacity:.18;flex:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pb-home.pb-themed .pb-light{display:none}
+  :root:not([data-theme="light"]) .pb-home.pb-themed .pb-dark:not(.pb-icon){display:block}
+}
+:root[data-theme="dark"] .pb-home.pb-themed .pb-light{display:none}
+:root[data-theme="dark"] .pb-home.pb-themed .pb-dark:not(.pb-icon){display:block}
+@media (max-width:640px){
+  .pb-home img.pb-light,.pb-home img.pb-dark{display:none!important}
+  .pb-home .pb-icon{display:block}
+  .pb-rule{height:22px}
+}
+/* Library homepage: full endorsed logo, stays full on phones */
+.pb-home .pb-lib{height:40px}
+@media (max-width:640px){.pb-home img.pb-lib{display:block!important;height:34px}.pb-home .pb-lib~.pb-icon{display:none}}
