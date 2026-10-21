@@ -1,5 +1,5 @@
 /* Playbooks brand: compact library link shared by the library and every playbook header. */
-.pb-home{display:inline-flex;align-items:center;flex:none;min-height:44px;padding:4px 2px;text-decoration:none;border-radius:10px;line-height:0}
+.pb-home{display:inline-flex;align-items:center;flex:none;min-width:44px;min-height:44px;padding:4px 2px;text-decoration:none;border-radius:10px;line-height:0}
 .pb-home img{display:block;width:auto;height:30px;background:none;border-radius:0}
 .pb-home .pb-icon{height:34px}
 .pb-home .pb-icon,.pb-home .pb-dark{display:none}

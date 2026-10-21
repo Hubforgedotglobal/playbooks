@@ -5,7 +5,7 @@
   const apiBase = typeof API_SETTING === "string" && API_SETTING.trim()
     ? API_SETTING.trim().replace(/\/+$/, "")
     : (!libraryHost ? location.origin : "");
-  const slugs = ["designing-dashboards", "claude-dashboards", "designing-surveys-and-forms"];
+  const slugs = ["designing-dashboards", "claude-dashboards", "designing-surveys-and-forms", "consulting-in-me-with-ai"];
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   const slug = document.body.dataset.communitySlug || ($("[data-community-slug]") || {}).dataset?.communitySlug || "";

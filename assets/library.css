@@ -222,3 +222,15 @@ html.library-motion-ready [data-library-reveal].is-visible { opacity:1; transfor
   .book,.library-tools button { transition:none; }
   .hero::before,.hero::after { animation:none!important; }
 }
+
+/* Playbook 04: Consulting in M&E with AI */
+.book[data-slug="consulting-in-me-with-ai"] .book-visual { background:var(--blue); }
+.book[data-slug="consulting-in-me-with-ai"] .meta-mark { background:#2f86c0; }
+.book[data-slug="consulting-in-me-with-ai"] .art-steps i { height:22px; }
+.book[data-slug="consulting-in-me-with-ai"] .art-steps i:nth-child(2) { height:36px; }
+.book[data-slug="consulting-in-me-with-ai"] .art-steps i:nth-child(3) { height:50px; }
+.book[data-slug="consulting-in-me-with-ai"] .art-steps i:nth-child(4) { height:64px; }
+.book[data-slug="consulting-in-me-with-ai"] .art-steps i:nth-child(5) { height:78px; background:var(--yellow); }
+.book-actions-four { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.book-actions-four .button { width:100%; min-width:0; text-align:center; }
+@media (max-width:380px) { .book-actions-four { grid-template-columns:1fr; } }
