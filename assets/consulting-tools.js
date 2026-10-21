@@ -244,7 +244,7 @@ const D = {"AGENDA": [["0:00", "Welcome, purpose and how findings were reached",
   const SKIPT = new Set('A,BUTTON,CODE,PRE,H1,H2,H3,H4,H5,INPUT,TEXTAREA,SELECT,LABEL,SUMMARY,SVG,TEXT,TD,TH,MARK,SCRIPT,STYLE,DT,SMALL'.split(','));
   const glossify = (root, used) => { const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: (n) => { for (let p = n.parentElement; p && p !== root.parentElement; p = p.parentElement) { if (SKIPT.has(p.tagName.toUpperCase()) || p.classList.contains('gl') || p.classList.contains('three') || p.classList.contains('qc') || p.classList.contains('cs') || p.classList.contains('paper')) return NodeFilter.FILTER_REJECT; } return GRE.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP; } });
     const nodes = []; while (walk.nextNode()) nodes.push(walk.currentNode);
-    nodes.forEach((n) => { const m = n.nodeValue.match(GRE); if (!m) return; const key = m[1].toLowerCase(); if (used.has(key) || !GMAP[key]) return; used.add(key); const after = n.splitText(m.index); after.nodeValue = after.nodeValue.slice(m[1].length); const b = document.createElement('button'); b.type = 'button'; b.className = 'gl'; b.dataset.gl = key; b.textContent = m[1]; n.parentNode.insertBefore(b, after); }); };
+    nodes.forEach((n) => { const m = n.nodeValue.match(GRE); if (!m) return; const key = m[1].toLowerCase(); if (used.has(key) || !GMAP[key]) return; used.add(key); if (/^(inline-)?(grid|flex)$/.test(getComputedStyle(n.parentNode).display)) { const w = document.createElement('span'); w.className = 'glw'; n.parentNode.insertBefore(w, n); w.appendChild(n); } const after = n.splitText(m.index); after.nodeValue = after.nodeValue.slice(m[1].length); const b = document.createElement('button'); b.type = 'button'; b.className = 'gl'; b.dataset.gl = key; b.textContent = m[1]; n.parentNode.insertBefore(b, after); }); };
   let popFor = null; const hidePop = () => { POP.hidden = true; if (popFor) popFor.setAttribute('aria-expanded', 'false'); popFor = null; };
   document.addEventListener('click', (e) => { const g = e.target.closest('.gl'); if (!g) { if (!e.target.closest('#glpop')) hidePop(); return; } if (popFor === g) { hidePop(); return; } const [t, d] = GMAP[g.dataset.gl]; POP.innerHTML = `<b>${esc(t)}</b><span>${esc(d)}</span><a href="#library" data-glall>All ${D.GLOSS.length} terms</a>`; POP.hidden = false; popFor = g; g.setAttribute('aria-expanded', 'true'); const r = g.getBoundingClientRect(); const w = Math.min(300, window.innerWidth - 24); POP.style.width = w + 'px'; POP.style.left = Math.max(12, Math.min(window.innerWidth - w - 12, r.left + r.width / 2 - w / 2)) + 'px'; POP.style.top = (window.scrollY + r.bottom + 8) + 'px'; });
   document.addEventListener('click', (e) => { if (e.target.closest('[data-glall]')) { const b = $('[data-l="gloss"]'); if (b) b.click(); hidePop(); } });
@@ -456,7 +456,7 @@ const D = {"AGENDA": [["0:00", "Welcome, purpose and how findings were reached",
     const drawR = () => { const T = D.TARGETS[tgt]; const s = $('#rsvg');
       s.innerHTML = [1, 2, 3, 4].map((k) => `<polygon points="${poly(Array(N).fill(k))}" class="rg"/>`).join('') + C.map((_, i) => { const [x, y] = pt(i, 108); return `<line x1="0" y1="0" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" class="rg"/>`; }).join('') +
         `<polygon points="${poly(T)}" class="rt"/><polygon points="${poly(v)}" class="ry"/>` + v.map((x, i) => { const [a, b] = pt(i, x * 27); return `<circle cx="${a.toFixed(1)}" cy="${b.toFixed(1)}" r="4" class="rd"/>`; }).join('') +
-        C.map(([n], i) => { const [x, y] = pt(i, 128); return `<text x="${x.toFixed(1)}" y="${(y + 3).toFixed(1)}" text-anchor="${Math.abs(x) < 10 ? 'middle' : x > 0 ? 'start' : 'end'}" class="rl">${esc(n)}</text>`; }).join('');
+        C.map(([n], i) => { const [x, y] = pt(i, 128); const w = n.split(' '); let k = 0; if (w.length > 1 && n.length > 12) { let best = 1e9; for (let j = 1; j < w.length; j++) { const d = Math.abs(w.slice(0, j).join(' ').length - w.slice(j).join(' ').length); if (d < best) { best = d; k = j; } } } const xs = x.toFixed(1); const body = k ? `<tspan x="${xs}" dy="-0.25em">${esc(w.slice(0, k).join(' '))}</tspan><tspan x="${xs}" dy="1.1em">${esc(w.slice(k).join(' '))}</tspan>` : esc(n); return `<text x="${xs}" y="${(y + 3).toFixed(1)}" text-anchor="${Math.abs(x) < 10 ? 'middle' : x > 0 ? 'start' : 'end'}" class="rl">${body}</text>`; }).join('');
       const gaps = C.map((c, i) => [T[i] - v[i], i]).filter(([g]) => g > 0).sort((a, b) => b[0] - a[0] || a[1] - b[1]).slice(0, 2);
       const met = C.filter((_, i) => v[i] >= T[i]).length;
       $('#gplan').innerHTML = `<p class="gh2"><b>${met} of ${N}</b> competencies at the ${esc(tgt.toLowerCase())} level.</p>` + (gaps.length ? gaps.map(([g, i]) => `<div class="gp"><p class="kick">Grow: ${esc(C[i][0])} <span>${g} level${g > 1 ? 's' : ''} to go</span></p><ol><li>${esc(C[i][3])}</li><li>${esc(C[i][4])}</li></ol></div>`).join('') : `<div class="gp"><p class="kick">You meet the profile</p><p>Aim one level higher, or teach what you know: mentoring is how global experts grow.</p></div>`); };
@@ -744,5 +744,63 @@ const D = {"AGENDA": [["0:00", "Welcome, purpose and how findings were reached",
   $$('.stag').forEach(stagger);
   try { const ro = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return; const t = e.target; t.classList.add('in'); $$('.ex2 .to', t).forEach((n) => countUp(n, +n.dataset.from, +n.dataset.n, 1500)); ro.unobserve(t); }), { rootMargin: '0px 0px -10% 0px' }); $$('.rv, .stag').forEach((x) => ro.observe(x)); } catch (e) { $$('.rv, .stag').forEach((x) => x.classList.add('in')); }
   if (!motionOK) $$('.rv, .stag').forEach((x) => x.classList.add('in'));
+})();
+
+
+/* respfix: responsive helpers (table cards, scroll cues). Runs after the app has rendered. */
+(function () {
+  if (typeof document === 'undefined') return;
+  const CARD = '.dtbl,.dvt,.up';
+  const SCROLL = '.dtbl,.dvt,.up,.tp-tw,.mxw,.tn-stages';
+  const labelTables = (root) => {
+    (root || document).querySelectorAll('table').forEach((t) => {
+      const wrap = t.parentElement; if (!wrap || !wrap.matches(CARD)) return;
+      wrap.classList.add('rcards');
+      const hr = t.tHead && t.tHead.rows.length ? t.tHead.rows[t.tHead.rows.length - 1] : null; if (!hr) return;
+      const labels = [...hr.cells].map((c) => c.textContent.trim());
+      [...t.tBodies].forEach((tb) => [...tb.rows].forEach((r) => [...r.cells].forEach((c, i) => { if (labels[i] && c.dataset.label !== labels[i]) c.dataset.label = labels[i]; })));
+    });
+  };
+  const watched = new WeakSet();
+  const state = (el) => {
+    const x = el.scrollWidth > el.clientWidth + 4;
+    el.classList.toggle('is-x', x);
+    el.classList.toggle('at-end', !x || el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+    const h = el.previousElementSibling; if (h && h.classList.contains('rsx-hint')) h.hidden = !x;
+  };
+  const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver((es) => es.forEach((e) => state(e.target))) : null;
+  const watch = () => {
+    const els = new Set(document.querySelectorAll(SCROLL));
+    document.querySelectorAll('table').forEach((t) => { const p = t.parentElement; if (p && /(auto|scroll)/.test(getComputedStyle(p).overflowX) && !p.closest('.cheatprev')) els.add(p); });
+    els.forEach((el) => {
+      if (watched.has(el)) { state(el); return; } watched.add(el);
+      el.classList.add('rsx-sc');
+      if (el.querySelector('table')) { const h = document.createElement('p'); h.className = 'rsx-hint'; h.hidden = true; h.textContent = 'Swipe sideways to see every column'; el.parentNode.insertBefore(h, el); }
+      el.addEventListener('scroll', () => state(el), { passive: true });
+      if (ro) ro.observe(el); state(el);
+    });
+  };
+  /* phones: running text never below 15px (labels and kickers keep their size) */
+  const phone = window.matchMedia ? window.matchMedia('(max-width:600px)') : { matches: false };
+  const seen = new WeakSet();
+  const lift = () => {
+    if (!phone.matches) return;
+    document.querySelectorAll('p,li,dd,td,span,a,em,label,div').forEach((e) => {
+      if (seen.has(e)) return; seen.add(e);
+      if (e.closest('svg,pre,code,textarea,.cheatprev,.hart,[aria-hidden="true"],.rsx-hint')) return;
+      let words = 0; for (const n of e.childNodes) if (n.nodeType === 3) words += n.nodeValue.trim().split(/\s+/).filter(Boolean).length;
+      if (words < 8) return;
+      const c = getComputedStyle(e); const fs = parseFloat(c.fontSize);
+      if (fs >= 15 || fs < 12.5 || c.textTransform === 'uppercase' || /mono/i.test(c.fontFamily)) return;
+      e.classList.add('fs15');
+    });
+  };
+  const run = () => { try { labelTables(); watch(); lift(); } catch (e) { /* layout helpers must never break the page */ } };
+  if (phone.addEventListener) phone.addEventListener('change', run);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+  window.addEventListener('load', run);
+  let tm = 0; const mo = new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(run, 120); });
+  const start = () => mo.observe(document.body, { childList: true, subtree: true });
+  if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
 })();
 
