@@ -5,7 +5,7 @@
   const apiBase = typeof API_SETTING === "string" && API_SETTING.trim()
     ? API_SETTING.trim().replace(/\/+$/, "")
     : (!libraryHost ? location.origin : "");
-  const slugs = ["designing-dashboards", "claude-dashboards", "designing-surveys-and-forms", "consulting-in-me-with-ai"];
+  const slugs = ["designing-dashboards", "claude-dashboards", "designing-surveys-and-forms", "consulting-in-me-with-ai", "giants-of-evidence"];
   const $ = (selector, root=document) => root.querySelector(selector);
   const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
   const slug = document.body.dataset.communitySlug || ($("[data-community-slug]") || {}).dataset?.communitySlug || "";
@@ -331,9 +331,9 @@
   function trackDownloads() {
     document.addEventListener("click",event => {
       const link = event.target.closest("a[href]");
-      if (!link) return;
+      if (!link || !link.hasAttribute("download")) return;
       const url = new URL(link.href,location.href);
-      const match = url.pathname.match(/\/([^/]+)\/(?:playbook|workbook|cheat-sheet)\.pdf$/);
+      const match = url.pathname.match(/\/([^/]+)\/[^/]+\.pdf$/i);
       if (!match || !slugs.includes(match[1]) || !apiBase) return;
       if (state.data && !state.data.playbooks?.some(book => book.slug === match[1])) return;
       request("/events",{method:"POST",authorized:true,body:JSON.stringify({playbook:match[1],kind:"download"}),keepalive:true}).catch(() => {});
