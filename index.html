@@ -304,12 +304,11 @@
 <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=57cce2c1eade">
 <link rel="stylesheet" href="/assets/brand/brand.css?v=7fca6523a351">
 <style data-giants-card="">
-  .book[data-slug="giants-of-evidence"] .book-visual{background:#5fb7f0}
+  .book[data-slug="giants-of-evidence"] .book-visual{background:#eaf6ff;isolation:isolate}
+  .book[data-slug="giants-of-evidence"] .book-visual::before,.book[data-slug="giants-of-evidence"] .book-visual::after{display:none}
+  .book[data-slug="giants-of-evidence"] .art-word{max-width:53%;font-size:clamp(28px,2.5vw,34px)}
   .book[data-slug="giants-of-evidence"] .book-meta .meta-mark{background:#5fb7f0}
-  .book[data-slug="giants-of-evidence"] .giants-mark{position:absolute;right:20px;bottom:15px;width:min(54%,260px);display:grid;justify-items:center;gap:2px}
-  .book[data-slug="giants-of-evidence"] .giants-mark svg{width:100%;height:auto;max-height:136px;overflow:visible}
-  .book[data-slug="giants-of-evidence"] .giants-mark span{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
-  .book[data-slug="giants-of-evidence"] .giants-mark i{display:inline-block;width:5px;height:5px;margin:0 7px 2px;border-radius:50%;background:#cb6ce6}
+  .book[data-slug="giants-of-evidence"] .giants-cover{position:absolute;right:8px;bottom:5px;width:43%;height:calc(100% - 16px);object-fit:contain;object-position:center bottom}
 </style></head>
 <body>
   <div class="topline" aria-hidden="true"></div>
@@ -373,18 +372,7 @@
       <div class="books" data-library-grid=""><article class="book" aria-labelledby="giants-title" data-slug="giants-of-evidence" data-title="Giants of Evidence" data-topics="mel monitoring evaluation evidence learning history people" data-topic-labels="MEL history|Evidence|People and ideas" data-order="5" data-published="2026-10-21" data-search="giants evidence 24 lives 67 ideas theory methods history origins evaluation learning monitoring field authors pioneers source references" data-library-reveal="">
           <div class="book-visual" aria-hidden="true" data-book-art="giants"><span class="volume">Playbook 05 · Evidence</span>
   <span class="art-word">The people<br>behind MEL.</span>
-  <span class="giants-mark" aria-hidden="true">
-    <svg viewBox="0 0 256 152" role="presentation">
-      <path d="M30 48 83 25 137 52 197 28M30 48 57 112 137 52 172 112 197 28M57 112 111 130 172 112 226 85M83 25 111 130M137 52 226 85M30 48 111 130" fill="none" stroke="#1f1d22" stroke-opacity=".3" stroke-width="1.5"></path>
-      <circle cx="30" cy="48" r="9" fill="#ff5a5a"></circle><circle cx="83" cy="25" r="7" fill="#ffde59"></circle>
-      <circle cx="137" cy="52" r="12" fill="#ff66c4"></circle><circle cx="197" cy="28" r="8" fill="#7ed957"></circle>
-      <circle cx="57" cy="112" r="8" fill="#cb6ce6"></circle><circle cx="111" cy="130" r="6" fill="#ff5a5a"></circle>
-      <circle cx="172" cy="112" r="10" fill="#ffde59"></circle><circle cx="226" cy="85" r="8" fill="#cb6ce6"></circle>
-      <circle cx="111" cy="74" r="4" fill="#fffdf8"></circle><circle cx="192" cy="71" r="5" fill="#fffdf8"></circle>
-      <circle cx="79" cy="77" r="5" fill="#fffdf8"></circle><circle cx="146" cy="23" r="4" fill="#fffdf8"></circle>
-    </svg>
-    <span>24 voices <i></i> 67 ideas</span>
-  </span></div>
+  <img class="giants-cover" src="assets/covers/giants-of-evidence-3d.png" alt="" width="954" height="1321" decoding="async"></div>
           <div class="book-body">
             <p class="book-meta"><span class="meta-mark"></span>24 lives · 67 big ideas <span>·</span> 606-page B5 edition</p>
             <h3 id="giants-title">Giants of Evidence</h3>
