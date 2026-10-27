@@ -45,3 +45,19 @@ python -m unittest discover -s tests -p 'test_*.py' -v
 These maintenance commands run in the Replit source workspace, not GitHub Pages.
 Publish static files to this repository without changing either site's CNAME.
 New-title reader activity additionally requires publishing the updated Replit API.
+
+## Giants of Evidence
+
+`giants-of-evidence/` contains the supplied web edition and the unchanged
+606-page International Edition B5 PDF. It is the fifth library title, covering
+24 lives and 67 ideas behind monitoring, evaluation and learning.
+
+Every hosted PDF now has separate browser-view and download actions. View links
+open a new tab without a `download` attribute; explicit download links retain
+the file name. This applies to companion workbooks, cheat sheets, template packs
+and toolkits as well as each main playbook.
+
+Run `node scripts/build-playbook-pdf-actions.cjs` after importing new documents,
+then refresh asset versions. The action generator preserves embedded scripts
+and external source citations. Existing PDF files must remain byte-for-byte
+copies of the approved uploads.

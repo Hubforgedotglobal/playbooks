@@ -37,3 +37,10 @@ playbook, an 81-page pack with 36 printable templates, and a 94-page toolkit.
 - [Template pack PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/template-pack.pdf)
 - [Consulting toolkit PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/consulting-toolkit.pdf)
 - [One-page cheat sheet PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/cheat-sheet.pdf)
+
+## Giants of Evidence
+
+Trace 24 lives and 67 ideas through the history of monitoring, evaluation and learning. This free, 606-page international edition explores seven idea families, nine decades of change and the thinkers who built the evidence field.
+
+- [Read the web edition](https://playbooks.hubforgeglobal.com/giants-of-evidence/)
+- [View or download the 606-page B5 PDF](https://playbooks.hubforgeglobal.com/giants-of-evidence/giants-of-evidence-international-edition-b5.pdf)

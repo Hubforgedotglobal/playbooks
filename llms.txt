@@ -2,7 +2,7 @@
 
 > Free HubForge playbooks about dashboard design, surveys and forms, AI-assisted workflows, and evidence-based decisions. Each title has a readable web version and a downloadable PDF.
 
-Published by HubForge Global Impact Network Foundation. The library currently contains three playbooks. These are educational resources, not a dashboard-hosting service.
+Published by HubForge Global Impact Network Foundation. The library currently contains five playbooks. These are educational resources, not a dashboard-hosting service.
 
 ## Library
 
@@ -39,3 +39,9 @@ Published by HubForge Global Impact Network Foundation. The library currently co
 - [Template pack PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/template-pack.pdf): 81 pages with 36 printable templates.
 - [From Zero to World-Class toolkit PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/consulting-toolkit.pdf): 94-page M&E consulting toolkit.
 - [Cheat sheet PDF](https://playbooks.hubforgeglobal.com/consulting-in-me-with-ai/cheat-sheet.pdf): One-page CONSULT method reference from the supplied playbook.
+
+## Giants of Evidence
+
+- [Web edition](https://playbooks.hubforgeglobal.com/giants-of-evidence/): A 606-page history of the people and ideas that shaped MEL.
+- [Plain-text overview](https://playbooks.hubforgeglobal.com/giants-of-evidence/index.md): Seven idea families, nine decades, and 24 stories from the evidence field.
+- [International PDF edition](https://playbooks.hubforgeglobal.com/giants-of-evidence/giants-of-evidence-international-edition-b5.pdf): 606 pages, B5.
